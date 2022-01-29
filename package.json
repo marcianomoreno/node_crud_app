@@ -1,0 +1,27 @@
+{
+  "name": "node_crud_app",
+  "version": "1.0.0",
+  "description": "Sample app based on rahulguptalive's Medium post",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "keywords": [
+    "sample"
+  ],
+  "author": "Marciano Moreno",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "repository":{
+    "url": "https://github.com/marcianomoreno/node_crud_app.git"
+  }
+}
