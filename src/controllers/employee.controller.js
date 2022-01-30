@@ -13,11 +13,14 @@ exports.create = function(req, res) {
 const new_employee = new Employee(req.body);
 //handles null error
 if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+  console.log("Employee:create:Missing key");
   res.status(400).send({ error:true, message: 'Please provide all required field' });
 }else{
 Employee.create(new_employee, function(err, employee) {
-  if (err)
-  res.send(err);
+  if (err){
+    res.status(400).send({ error:true, message: err});
+    return;
+  }
   res.json({error:false,message:"Employee added successfully!",data:employee});
 });
 }
@@ -31,6 +34,7 @@ Employee.findById(req.params.id, function(err, employee) {
 };
 exports.update = function(req, res) {
   if(req.body.constructor === Object && Object.keys(req.body).length === 0){
+    console.log("Employee:update:Missing key");
     res.status(400).send({ error:true, message: 'Please provide all required field' });
   }else{
     Employee.update(req.params.id, new Employee(req.body), function(err, employee) {
@@ -39,6 +43,11 @@ exports.update = function(req, res) {
    res.json({ error:false, message: 'Employee successfully updated' });
 });
 }
+};
+exports.partialUpdate = function(req, res){
+Employee.partialUpdate(req.params.id, new Employee(req.body), function(err, employee) {
+    
+});
 };
 exports.delete = function(req, res) {
 Employee.delete( req.params.id, function(err, employee) {
