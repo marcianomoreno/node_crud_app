@@ -11,4 +11,6 @@ router.get('/:id', employeeController.findById);
 router.put('/:id', employeeController.update);
 // Delete a employee with id
 router.delete('/:id', employeeController.delete);
+// Update an employee partially
+router.patch('/:id', employeeController.partialUpdate);
 module.exports = router

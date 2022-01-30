@@ -58,6 +58,37 @@ if(err) {
 }
 });
 };
+Employee.partialUpdate = function(id, employee, result){
+  console.log("model:partialUpdate")
+
+  let query = "UPDATE employees SET "
+  console.log(employee)
+  console.log(query)
+
+  for (let key in employee){
+    console.log(key,':', employee[key]);
+    if (key != 'created_at' && key != 'updated_at'){
+      if (key != 'salary' && key != 'status' && employee[key]!== undefined){
+        query += key + ' = \'' + employee[key] + "\', "
+      }else{
+        if (employee[key] !== undefined)
+          query += key + ' = ' + employee[key] + ", "
+      }
+    }
+  }
+  query = query.substring(0, query.length-2);
+  query += " WHERE id = " + id + ';'
+  console.log(query);
+  dbConn.query(query, function(err, res){
+    if(err) {
+      console.log("error: ", err);
+      result(null, err);
+    }else{
+      result(null, res);
+    }
+  
+  });
+};
 Employee.delete = function(id, result){
 dbConn.query("DELETE FROM employees WHERE id = ?", [id], function (err, res) {
 if(err) {
