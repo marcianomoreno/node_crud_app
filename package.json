@@ -15,13 +15,16 @@
   "dependencies": {
     "body-parser": "^1.19.1",
     "dotenv": "^14.3.2",
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
-    "mysql2": "^2.3.3"
+    "express-session": "^1.17.2",
+    "mysql2": "^2.3.3",
+    "passport": "^0.5.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
-  "repository":{
+  "repository": {
     "url": "https://github.com/marcianomoreno/node_crud_app.git"
   }
 }
